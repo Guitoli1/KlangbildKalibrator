@@ -1,5 +1,6 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
+#include "ScaledEditor.h"
 
 namespace
 {
@@ -246,6 +247,6 @@ void KalibratorAudioProcessor::setStateInformation (const void* data, int sizeIn
     uiVersion++;
 }
 
-juce::AudioProcessorEditor* KalibratorAudioProcessor::createEditor() { return new KalibratorAudioProcessorEditor (*this); }
+juce::AudioProcessorEditor* KalibratorAudioProcessor::createEditor() { return new kb::ScaledEditor (*this, new KalibratorAudioProcessorEditor (*this)); }
 
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter() { return new KalibratorAudioProcessor(); }
